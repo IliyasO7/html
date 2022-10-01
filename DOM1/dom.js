@@ -1,4 +1,7 @@
 //Examine the document object
+//git remote add origin https://github.com/7083375809/html.git
+//git push -u origin main
+
 
 //console.dir(document);
 /*
