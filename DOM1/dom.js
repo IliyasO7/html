@@ -133,6 +133,14 @@ function addItem(e)
     e.preventDefault();
 
     //console.log(1);
+    /*
+    <input type="text" class="form-control mr-2" id="item">
+      
+      <br>
+        <input type="text" class="form-control mr-2" id="description">
+        <input type="submit" class="btn btn-dark" value="Submit">
+      </br>
+      */
     var newItem = document.getElementById('item').value;
     const description = document.getElementById('description').value;
 
@@ -208,7 +216,9 @@ function addItem(e)
             //convert tto array
             Array.from(items).forEach(function(item){
                 var itemName = item.firstChild.textContent;
-                if(itemName.toLowerCase().indexOf(text) != -1){
+                const description = item.childNodes[1].textContent;
+
+                if(itemName.toLowerCase().indexOf(text) != -1  || description.toLowerCase().indexOf(text) != -1 ){
                     item.style.display = 'block';
                 }
                 else
