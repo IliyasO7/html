@@ -8,6 +8,34 @@ btn.addEventListener("click",(e)=>
 
 });
 */
+/*
+const myform = document.querySelector('#my-form');
+const nameInput = document.querySelector('#fName');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+
+myform.addEventListener('submit', onSubmit);
+
+function onSubmit(e){
+    e.preventDefault();
+
+    if(nameInput.value ==='' || emailInput.value ==='')
+    {
+        alert('please enter field');
+        return;
+
+    }
+
+    console.log(nameInput.value);
+    localStorage.setItem('name',nameInput.value);
+    console.log(emailInput.value);
+    localStorage.setItem('emailId',emailInput.value);
+
+
+}
+*/
 
 const myform = document.querySelector('#my-form');
 const nameInput = document.querySelector('#fName');
@@ -23,19 +51,20 @@ function onSubmit(e){
 
     if(nameInput.value ==='' || emailInput.value ==='')
     {
-        alert('please enter fields');
+        alert('please enter field');
         return;
 
     }
 
-    console.log(nameInput.value);
-    localStorage.setItem('name',nameInput.value);
-    console.log(emailInput.value);
-    localStorage.setItem('emailId',emailInput.value);
+   let myObj = {
+      name : nameInput.value,
+      emailid : emailInput.value
+    };
 
+    let myObj_serialized = JSON.stringify(myObj);
 
+    localStorage.setItem('myObj',myObj_serialized);
 }
-
 
 /*
 const btn = document.querySelector('.btn');
