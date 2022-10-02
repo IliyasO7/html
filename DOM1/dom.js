@@ -128,12 +128,16 @@ var itemlist = document.getElementById('items');
 form.addEventListener('submit',addItem);
 
 //Add item
-function addItem(e){
+function addItem(e)
+{
     e.preventDefault();
 
     //console.log(1);
     var newItem = document.getElementById('item').value;
+    const description = document.getElementById('description').value;
 
+
+    const descriptionNode = document.createTextNode(description);
     //create new li element
 
     var li = document.createElement('li');
@@ -143,6 +147,8 @@ function addItem(e){
 
     //add text ndoe with input value
     li.appendChild(document.createTextNode(newItem));
+    li.appendChild(descriptionNode);
+    
 
     var deleteBtn = document.createElement('button');
 //add clasesto deletebtn
