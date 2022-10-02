@@ -91,7 +91,7 @@ items[2].style.backgroundColor = 'green';
 //previous sibling
 
 //console.log(itemlist.previousElementSibling);
-
+/*
 //create element
 var newDiv = document.createElement('div');
 //add class
@@ -118,3 +118,110 @@ console.log(newDiv);
 newDiv.style.fontSize = '30px';
 
 container.insertBefore(newDiv, h1);
+*/
+
+
+var form =document.getElementById('addForm');
+var itemlist = document.getElementById('items');
+
+//form submit event
+form.addEventListener('submit',addItem);
+
+//Add item
+function addItem(e){
+    e.preventDefault();
+
+    //console.log(1);
+    var newItem = document.getElementById('item').value;
+
+    //create new li element
+
+    var li = document.createElement('li');
+    //Add class name to it
+    li.className = 'list-group-item';
+    //console.log(li);
+
+    //add text ndoe with input value
+    li.appendChild(document.createTextNode(newItem));
+
+    var deleteBtn = document.createElement('button');
+//add clasesto deletebtn
+    deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+    //adding edit button
+    var editButton = document.createElement('button');
+    editButton.className = 'btn btn-danger btn-sm float-right delete';
+    editButton.appendChild(document.createTextNode('E'));
+    li.appendChild(editButton);
+    
+
+    //aapendtext ndoe
+
+    deleteBtn.appendChild(document.createTextNode('X'));
+// append button to li
+    li.appendChild(deleteBtn);
+
+
+
+
+//append li to list
+    itemlist.appendChild(li);
+
+    //what about deleting items
+    // add and event lsitener
+    itemlist.addEventListener('click', removeItem);
+
+
+//function removeItem
+    function removeItem(e){
+        if(e.target.classList.contains('delete')){
+            if(confirm('Are you sure?'))
+            {
+                var li=e.target.parentElement;
+                itemlist.removeChild(li);
+
+            }
+        }
+
+        //adding filter
+        var filter = document.getElementById('filter');
+
+        //add evetn listenber
+
+        filter.addEventListener('keyup', filterItems);
+
+        //add filter fucntion
+        function filterItems(e)
+        {
+            //convert to lower if upper
+            var text = e.target.value.toLowerCase();
+            //console.log(text);
+
+            //get element by tagename
+
+            var items = itemlist.getElementsByTagName('li');
+            //convert tto array
+            Array.from(items).forEach(function(item){
+                var itemName = item.firstChild.textContent;
+                if(itemName.toLowerCase().indexOf(text) != -1){
+                    item.style.display = 'block';
+                }
+                else
+                {
+                    item.style.display = 'none';
+                }
+            });
+
+
+
+        }
+
+    
+    }
+
+
+
+
+
+}
+
+
