@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        form{
+            text-align: center;
+            border: 2px;
+        }
+        input{
+            width:100%;
+            padding: 12px 20px;
+            box-sizing: border-box;
+
+        } 
+        body{
+            
+            box-sizing: border-box;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <center><h1 style="color:orange"> Book a call</h1></center>
+    <center> <p>Book a call slot and our representative will call upu withing 1 hour</p></center><br>
+    <hr>
+    <form  id="my-form" >
+        <h1></h1>
+        <div class="msg" ></div>
+        <div>
+            <label for="fName"><left>Name:</left></label><br>
+            <input type="text" id="fName" > <br>
+        </div>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email"><br><br><br><br>
+        </div>
+            <!--
+            <label for="PhoneNo">Phone No:</label><br>
+            <input type="text" name="PhoneNo" id="PhoneNo"><br>
+            <label for="date">Time for call:</label><br>
+            <input type="date" name="date" id="date" width:50% placeholder="22-11-20;"> <br><br><input list="time" width:50%>
+
+            <datalist id="time">
+              <option value="11-00">
+              <option value="12-00">
+              <option value="13:00">
+              <option value="14-00">
+              <option value="15-00">
+            </datalist> <br><br>
+        -->
+
+            <input class="btn" style="background-color:orange" type="submit"  value="Submit">
+            
+    </form>
+
+    <ul id="users"></ul>
+<!--
+    <ul class="items">
+        <li style= "color:green" class="items">HELLO</li></style>
+        <li style= "color:yellow" class="items">Item2</li>
+        <li class="items">Item3</li>
+    </ul>
+-->
+    
+    
+    <script src="index.js">
+      
+    </script>
+</body>
+</html>
