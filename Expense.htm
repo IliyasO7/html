@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label >Choose Expense Amount</label>
+        <input type="text" id="ea" name="eamount" required>
+        <label >Choose description</label>
+        <input type="text" id="ed" name="edescription" required>
+        <label >Choose a categoty</label>
+        <input list="category" id="cl" name="category">
+        <datalist id="category">
+            <option value="fuel"></option>
+            <option value="Movie"></option>
+            <option value="trip"></option>
+            <option value="food"></option>
+        </datalist>
+        <button>Add Expense</button>
+
+
+    </form>
+    <ul id='listOfExpenses'></ul>
+
+    <script>
+        function saveToLocalStorage(event)
+        {
+            event.preventDefault();
+            const expenseAmount = event.target.eamount.value;
+            const expenseDescription = event.target.edescription.value;
+            const expenseCategory = event.target.category.value;
+
+            const obj = {
+                expenseAmount,
+                expenseDescription,
+                expenseCategory
+            }
+
+            localStorage.setItem(obj.expenseDescription, JSON.stringify(obj));
+            showListofRegisteredExpenses(obj);
+
+
+
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) =>{
+            Object.keys(localStorage).forEach(key => {
+                const user = JSON.parse(localStorage.getItem(key))
+                showListofRegisteredExpenses(user)
+            })
+
+        })
+
+        function showListofRegisteredExpenses(user)
+        {
+            const parentNode = document.getElementById('listOfExpenses');
+            const createNewUserHtml = `<li id='${user.expenseDescription}'>${user.expenseAmount} - ${user.expenseDescription} -${user.expenseCategory} 
+                                            <button onclick=deleteUser('${user.expenseDescription}')>Delete</button>
+                                            <button onclick=editUser('${user.expenseDescription}','${user.expenseAmount}','${user.expenseCategory}')>Edit</button>
+                                         </li>
+                                        `
+            console.log(createNewUserHtml);
+
+            parentNode.innerHTML += createNewUserHtml;
+            console.log(parentNode.innerHTML);
+        }
+
+        function deleteUser(expenseDescription)
+        {
+            
+            localStorage.removeItem(expenseDescription);
+            removeItemFromScreen(expenseDescription);
+        }
+        function editUser(expenseDescription,expenseAmount,expenseCategory)
+        {
+            document.getElementById('ed').value = expenseDescription; 
+            document.getElementById('ea').value = expenseAmount;
+            document.getElementById('cl').value = expenseCategory;
+
+            deleteUser(expenseDescription);
+
+        }
+
+        
+
+        function removeItemFromScreen(expenseDescription)
+        {
+            
+            const parentNode = document.getElementById('listOfExpenses');
+            const elem = document.getElementById(expenseDescription)
+
+            parentNode.removeChild(elem);
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
