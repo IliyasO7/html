@@ -10,6 +10,10 @@
             <button> Submit </button>
         </form>
         <ul id='listOfitems'></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js" ></script>
+        <!--request the server for the code for network calls-->
+
+
         <script>
             function saveToLocalStorage(event) {
                 event.preventDefault();
@@ -24,16 +28,28 @@
                     email,
                     phonenumber
                 }
-                localStorage.setItem(obj.email, JSON.stringify(obj))
-                showListofRegisteredUser(obj)
+
+                axios.post("https://crudcrud.com/api/6aab17b97e1d4d1c9b70989bf0ce3462/appointmentData", obj)
+                .then((response)=>{
+                    showListofRegisteredUser(response.data)
+                    console.log(response)
+                })
+                .catch((err)=> {
+                    console.log(err)
+                })
+
+
+
+                //localStorage.setItem(obj.email, JSON.stringify(obj))
+                //showListofRegisteredUser(obj)
             }
 
-            window.addEventListener('DOMContentLoaded', (event) => {
+      /*      window.addEventListener('DOMContentLoaded', (event) => {
                 Object.keys(localStorage).forEach(key => {
                     const user = JSON.parse(localStorage.getItem(key))
                     showListofRegisteredUser(user)
                 })
-            })
+            })*/
 
             function showListofRegisteredUser(user){
                 const parentNode = document.getElementById('listOfitems');
@@ -41,9 +57,9 @@
                                                 <button onclick=deleteUser('${user.email}')>Delete</button>
                                             </li>
                                             `
-                console.log(createNewUserHtml)
+               // console.log(createNewUserHtml)
                 parentNode.innerHTML +=  createNewUserHtml;
-                console.log(parentNode.innerHTML)
+               // console.log(parentNode.innerHTML)
             }
 
             function deleteUser(email) {
