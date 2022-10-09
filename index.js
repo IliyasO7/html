@@ -111,8 +111,11 @@ function onSubmit(e){
     showNoOfUsers(myObj);
 
     
+    
 
-   
+
+
+    
 
 
    
@@ -120,13 +123,33 @@ function onSubmit(e){
 function showNoOfUsers(myObj)
     {
         
-        const keyArr = Object.keys(myObj);
-
+        //const keyArr = Object.keys(myObj);
+        showNewUSerOnScreen(myObj)
+        
+/*
         keyArr.forEach(key =>
             {
                 console.log(myObj[key]);
-            });
+            });*/
+
+        
         
     }
+
+    function showNewUSerOnScreen(myObj){
+        
+            console.log(localStorage.getItem(myObj.email));
+        
+
+    } 
+   /* function deleteUser(emailInput){
+        console.log(emailInput);
+        localStorage.removeItem(emailInput);
+        
+    }
+    */
+
+
+   
 
 
