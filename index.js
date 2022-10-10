@@ -8,7 +8,7 @@ btn.addEventListener("click",(e)=>
 
 });
 */
-/*
+
 const myform = document.querySelector('#my-form');
 const nameInput = document.querySelector('#fName');
 const emailInput = document.querySelector('#email');
@@ -35,6 +35,7 @@ function onSubmit(e){
 
 
 }
+
 */
 /*
 const myform = document.querySelector('#my-form');
@@ -67,6 +68,10 @@ function onSubmit(e){
     
 }
 */
+
+
+
+
 
 /*
 const btn = document.querySelector('.btn');
@@ -151,5 +156,6 @@ function showNoOfUsers(myObj)
 
 
    
+
 
 
