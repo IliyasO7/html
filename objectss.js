@@ -12,11 +12,11 @@ const person ={
 /*
 console.log("print the attribute: "+person.hobbies[1]);
 console.log("print the attribute: "+person.address.state);
-
+*/
 
 const {age, address: {state}} = person;
 console.log(age, state);
-*/
+
 
 const todos=[
     {
@@ -40,3 +40,5 @@ for(let i=0;i<todos.length;i++)
 {
     console.log(todos[i].id);
 }
+
+
